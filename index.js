@@ -16,11 +16,11 @@ Task 1a - Voting Age
 Do the following:   
    1. Create a variable called votingAge and assign it a value
    2. Console log true if age is 18 or higher
-
-   HINT: no function required
+  
 */
-
-
+let  votingAge = 18
+if(votingAge >= 18)
+console.log("true")
 
 /*
 Task 1b - Values
@@ -32,11 +32,11 @@ Do the following:
 
    HINT: no function required
 */
-
-
-
-
-
+let firstVal = "hello"
+let secVal = "Goodbye"
+if(firstVal  === "hello")
+firstVal = secVal
+console.log(firstVal)
 /*
 Task 1c - Convert Strings to Numbers
 
@@ -46,11 +46,10 @@ Do the following:
    3. Console log the result
 
    HINT: look up the Number method
+
 */
-
-
-
-
+let string =  "1999"
+console.log(Number(string))
 /*
 Task 1d - Multiply
  
@@ -60,10 +59,10 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b) {
+  let sum = a * b;
+  return sum;
 }
-
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -76,11 +75,10 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(num) {
+  let age = num * 7;
+  return age;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -96,7 +94,7 @@ REMEMBER: This program should handle correctly adult AND puppy ages and weights
 Feeding Requirements:
 
 Adult Dogs 1 year and older 
-   up to 5 lbs - 5% of their body weight
+   >up to 5 lbs - 5% of their body weight
    6 - 10 lbs - 4% of their body weight 
    11 - 15 lbs - 3% of their body weight 
    > 15lbs - 2% of their body weight 
@@ -107,13 +105,28 @@ Puppies less than 1 year
    7 - 12 months 4% of their body weight
   
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
-*/  
+*/
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(weight, age) {
+  if (age >= 1) {
+    if (weight >= 6 && weight <= 10) {
+      return weight * 0.04;
+    } else if (weight >= 11 && weight <= 15) {
+      return weight * 0.03;
+    } else if (weight > 15) {
+      return weight * 0.02;
+    } else{
+      return weight * 0.05;
+    }
+  }
+  if(age >=0.16 && age <= 0.33){
+    return weight * 0.10;
+  }else if (age >=0.33 && age <= 0.58){
+    return weight * 0.05
+  }else if (age >= 0.58 && age <= 1){
+    return weight * 0.04
+  }
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -136,16 +149,33 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
 
-function game(user, computer){
-  /*add your code here*/
+let computer = Math.random();
+if(computer <= 0.34){
+  computer = 'rock';
+}else if(computer <= 0.67){
+  computer = 'paper';
+}else if(computer > 0.67){
+  computer = 'scissors';
 }
 
-
+function game(user, computer){
+  if(user === computer){
+    return `it's a tie`;
+  }else if(user === 'rock' && computer === 'scissors'){
+    return `you win!`;
+  }else if(user === 'paper' && computer === 'rock'){
+    return `you win!`;
+  }else if(user === 'scissors' && computer === 'paper'){
+    return `you win!`;
+  }else{
+    return `you lose!`;
+  }
+}
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
-//Metric Converter 
-//Task 5a - KM to Miles 
+//Metric Converter
+//Task 5a - KM to Miles
 /*
 Using the miles function below do the following:
 1. Receive a number of kilometers
@@ -153,11 +183,10 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(km) {
+  let convert = km * 0.621371;
+  return convert;
 }
-
-
 
 //Task 5b - Feet to CM
 /*
@@ -167,11 +196,9 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm) {
+  return cm / 30.48;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -183,12 +210,13 @@ Using the annoyingSong function below do the following:
     "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(number){
-     for(let i = number; i > 0; i--){
-       return `${number} bottles of soda on the wall, ${number} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`;
-     }
+function annoyingSong(number) {
+  for (let i = number; i > 0; i--) {
+    return `${number} bottles of soda on the wall, ${number} bottles of soda, take one down pass it around ${
+      i - 1
+    } bottles of soda on the wall`;
+  }
 }
-console.log(annoyingSong(99))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -205,11 +233,19 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(score) {
+  if (score >= 60 && score <= 69) {
+    return "you got a D";
+  } else if (score >= 70 && score <= 79) {
+    return "you got a C";
+  } else if (score >= 80 && score <= 89) {
+    return "you got a B";
+  } else if (score >= 90 && score <= 100) {
+    return "you got an A";
+  } else if (score < 60) {
+    return "you got an F";
+  }
 }
-
-
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
@@ -223,17 +259,18 @@ HINT - you may need to study tomorrow's content on arrays
 HINT - try looking up the .includes() method
 */
 
-
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+function vowelCounter(string) {
+  let vowels = "abcdefghijklmnopqrstuvwxyz";
+  let count = 0;
+  if (string.include(vowels)) {
+    count++;
+  }
 }
 
-
-
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
-function foo(){
-  console.log('its working');
-  return 'bar';
+function foo() {
+  console.log("its working");
+  return "bar";
 }
 foo();
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Don't touch the code after this line! 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
@@ -246,5 +283,5 @@ module.exports = {
   miles,
   feet,
   annoyingSong,
-  grade
-}
+  grade,
+};
